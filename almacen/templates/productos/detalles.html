@@ -1,0 +1,32 @@
+{% extends 'layoutadmin.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container p-5">
+    <h1 class="text-center" >Detalles del producto</h1>
+        <div class="row p-5">
+            <div class="col-md-3">
+            </div>
+            <div class="col-md-3">
+                <p><span class="txt_negrita">Codigo barra:</span> <br> {{object.codigo_barra}}</p>
+                <p><span class="txt_negrita">Nombre:</span> <br> {{object.nombre}}</p>
+                <p><span class="txt_negrita">Descripcion:</span> <br> {{object.descripcion}}</p>
+                <p><span class="txt_negrita">Stock:</span> <br> {{object.stock}}</p>
+                <p><span class="txt_negrita">Precio venta:</span> <br> {{object.precio_venta}}</p>
+                <p><span class="txt_negrita">Precio compra:</span> <br> {{object.precio_compra}}</p>
+                <p><span class="txt_negrita">Tipo producto:</span> <br> {{object.tipo_producto}}</p>
+                </div>
+            <div class="col-md-3">
+                <p><span class="txt_negrita">Imagen:</span> <br> <img src="{% static 'images/'%}{{object.imagen}}" alt="{{object.nombre}}" class="img-fluid"> </p>
+            
+                <!-- Botón para volver a la vista principal (Home) -->
+                <a href="../" type="submit" class="btn btn-primary">Volver</a>
+            </div>
+            <div class="col-md-3">
+            </div>
+        </div>
+        
+    </div>
+    
+
+{% endblock %}

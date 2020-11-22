@@ -1,0 +1,126 @@
+body, .card{
+    background-color: #f1f4f5;
+}
+
+a:before {
+    content: none!important;
+}
+
+		.icon.circle {
+			border: 0;
+			border-radius: 100%;
+			display: inline-block;
+			font-size: 1.25em;
+			height: 2.25em;
+			left: 0;
+			line-height: 2.25em;
+			text-align: center;
+			text-decoration: none;
+			top: 0;
+			width: 2.25em;
+		}
+
+			.icon.circle.fa-twitter {
+				background: #70aecd;
+				color: #fff;
+			}
+
+				.icon.circle.fa-twitter:hover {
+					background: #7fb7d2;
+				}
+
+			.icon.circle.fa-facebook {
+				background: #7490c3;
+				color: #fff;
+			}
+
+				.icon.circle.fa-facebook:hover {
+					background: #829bc9;
+				}
+
+			.icon.circle.fa-google-plus {
+				background-color: #1183AA!important;
+				color: #fff;
+			}
+
+				.icon.circle.fa-google-plus:hover {
+					background-color: #1183AA!important;
+				}
+
+			.icon.circle.fa-github {
+				background: #dcad8b;
+				color: #fff;
+			}
+
+				.icon.circle.fa-github:hover {
+					background: #e1b89b;
+				}
+
+			.icon.circle.fa-dribbble {
+				background: #da83ae;
+				color: #fff;
+			}
+
+				.icon.circle.fa-dribbble:hover {
+					background: #df93b8;
+                }
+
+
+
+.imagen-almacen{
+	border: rgb(105, 100, 148) 8px outset;
+	background-color:  rgb(168, 161, 233);
+	margin-left: 150px;
+    margin-right: 150px;
+}
+
+.carrusel{
+	background-color:  rgb(137, 126, 236);
+}
+
+.carousel-inner{
+	display: inline-block;
+}
+
+.tam{
+	height: 160px;
+	width: 300px;
+}
+
+.carousel-indicators{
+	bottom: -40px;
+}
+
+.izq, .der{
+	background-color: #3B4447;
+}
+
+.carousel-inner{
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.tarjeta{
+	padding-left: 175px;
+}
+
+.carousel-control-next, .carousel-control-prev {
+	width: 30px;
+    height: 30px;
+	margin-top: 60px;
+}
+
+.texto1{
+    text-shadow: 4px 4px 4px #5E6264;
+}
+
+.registro{
+	border: #88aeb6 8px outset;
+	margin-top: 50px;
+	margin-bottom: 70px;
+	background-color: #8c9296;
+}
+
+.texto2-admin{
+	font-family: 'Great Vibes', cursive;
+}

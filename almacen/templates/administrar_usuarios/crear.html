@@ -1,0 +1,48 @@
+{% extends 'layoutadmin.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block content %}
+    <div class="container p-5 ">
+        <link rel="stylesheet" href="{% static 'css/crudProductos.css' %}">
+    
+        {% comment %} {% for prod in object_list %}
+            <ol class="esconder">
+                <li>{{prod.codigo_barra}}</li>
+            </ol>
+        {% endfor %} {% endcomment %}
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <p>
+                <label for="username">Usuario:</label>
+                {{ form.username|add_class:"form-control" }}
+            </p>
+            <p>
+                <label for="first_name">Nombre:</label>
+                {{ form.first_name|add_class:"form-control" }}
+            </p>
+            <p>
+                <label for="last_name">Apellido:</label>
+                {{ form.last_name|add_class:"form-control" }}
+            </p>
+            <p>
+                <label for="email">Email:</label>
+                {{ form.email|add_class:"form-control" }}
+            </p>
+            <p>
+                <label for="is_superuser">¿Es administrador?:</label>
+                {{ form.is_superuser|add_class:"form-control" }}
+            </p>
+            <p>
+                <label for="is_staff">¿Es empleado?:</label>
+                {{ form.is_staff|add_class:"form-control" }}
+            </p>
+            
+            <button type="submit" id="boton_aceptar" class="btn btn-primary">Aceptar</button>
+            <a href="../" type="submit" class="btn btn-primary">Cancelar</a>
+            
+        </form>
+    </div>
+    
+    {% comment %} <script src="{% static 'js/crudProducto.js' %}"></script> {% endcomment %}
+{% endblock %}

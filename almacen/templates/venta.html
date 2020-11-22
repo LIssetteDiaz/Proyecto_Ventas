@@ -1,0 +1,73 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block content %}
+  <link rel="stylesheet" href="{% static 'css/venta.css' %}">
+  <div class="sidebar pt-5" >
+    <a href=".">Todos los productos</a>
+    <ul>
+      {% for categ in categorias %}
+        <li class="li_categoria"><a href="#">{{categ.nombre}}</a>
+          <ul>
+            {% for t in tipo %}
+              {% if categ.id == t.categoria.id %}
+                <li class="li_tipo"><a href="{{t.id}}">{{t.nombre}}</a></li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="contenido pt-4">
+    <span class="bg-dark menu-bar"><i class="fas fa-bars fa-1x p-2"></i> Categorias</span>
+    
+    <section>
+      <div class="texto1 text-center pt-2">
+        <h1>Encuentra todo lo que necesitas en un solo lugar</h1>
+        <h3>Tenemos nuestras compras online con despacho a domicilio gratis!!</h3>
+      </div>
+    </section>
+    
+    <div class="cajita m-4 p-3" id="lista-productos">
+      {% for prod in productos %}
+        
+        <div class="card carta p-3 m-3 bg-white" style="width: 18rem;">
+          
+          <div class="card-body">
+            <img src="{% static 'images/' %}{{prod.imagen}}" class="card-img-top" alt="...">
+            <h4 class="card-title text-center pt-3">Nombre: {{prod.nombre}}</h5>
+            
+            <hr>
+            <p class="card-text text-center">Descripcion: {{prod.descripcion}}</p>
+            <div class="card-footer numero-cantidad">
+              <p class="pl-4">Precio: $</p>
+              <strong class="text-muted">{{prod.precio_venta}}</strong>
+            </div>
+            <div class="text-center pb-3 pt-3 numero-cantidad">
+              <h6 class="pr-2 pt-2">Ingrese cantidad a comprar:</h6><input type="number" min="1" max="100" class="form-control cantidad mt-2" id="numero"/>
+            </div>
+            <div class="text-center pb-3 pt-3">
+              <button class="btn btn-outline-success" role="link" onclick="detallesProducto/{{prod.id}}">Ver producto</button>
+              {% comment %} <a href="detallesProducto/{{prod.id}}" type="button" class="btn btn-outline-success">Ver producto</a> {% endcomment %}
+            </div>
+            
+            <div class="text-center pb-3">
+              <a href="" type="button" class="btn btn-outline-danger agregar-carrito" data-id="{{prod.id}}">Agregar al Carrito</a>
+            </div>
+          </div>
+        </div>
+      {% empty %}
+        <p>no hay productos</p>
+      {% endfor %}
+    </div>
+  </div>
+  
+    
+  
+  <script src="{% static 'js/functions.js' %}"></script>
+  
+	    
+  
+  
+{% endblock %}

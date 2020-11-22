@@ -1,0 +1,22 @@
+{% extends 'layoutadmin.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container p-5">
+    <h1 class="text-center" >Detalles de Tipo Producto</h1>
+        <div class="row p-5">
+            <div class="col-md-3">
+            </div>
+            <div class="col-md-3">
+                <p><span class="txt_negrita">Nombre:</span> <br> {{object.nombre}}</p>
+                <p><span class="txt_negrita">Categoria:</span> <br> {{object.categoria}}</p>
+           
+            <a href="../" type="submit" class="btn btn-primary">Volver</a>
+            <div class="col-md-3">
+            </div>
+        </div>
+        
+    </div>
+    
+
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'layoutadmin.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container p-5">
+    <h1 class="text-center" >Detalles de la Sucursal</h1>
+        <div class="row p-5">
+            <div class="col-md-3">
+            </div>
+            <div class="col-md-3">
+                <p><span class="txt_negrita">Nombre:</span> <br> {{object.nombre}}</p>
+                <p><span class="txt_negrita">Descripcion:</span> <br> {{object.descripcion}}</p>
+                <p><span class="txt_negrita">Direccion:</span> <br> {{object.direccion}}</p>
+            </div>
+            <div class="col-md-3">
+                <p><span class="txt_negrita">Imagen:</span> <br> <img src="{% static 'images/'%}{{object.imagen}}" alt="{{object.nombre}}" class="img-fluid"> </p>
+            
+                <!-- Botón para volver a la vista principal (Home) -->
+                <a href="../" type="submit" class="btn btn-primary">Volver</a>
+            </div>
+            <div class="col-md-3">
+            </div>
+        </div>
+        
+    </div>
+    
+
+{% endblock %}

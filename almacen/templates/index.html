@@ -1,0 +1,78 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container texto1 text-center pt-5">
+        <h1>Bienvenidos a nuestra cadena de almacenes El Kioskito</h1>
+        <h3>Nuestro almacenes han estado creciendo gracias a usted y aca podras ver la ubicacion de los locales y tambien comprar en linea</h3>
+    </div>
+ 
+    <div class="container text-center mt-5 pb-5">
+        <p class="imagen-almacen pt-5 pb-5"><img class="img-principal" src="{% static 'images/imagen-principal.jpg' %}" alt=""></p>
+    </div>
+    
+    <section class="carrusel p-5 text-center">
+        <h1>Empresas con las que trabajamos</h1>
+        <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+              <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+              <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+              <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+            </ol>
+
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <div class="card-deck p-3">
+                    <div class="tarjeta pr-2">
+                        <img src="{% static 'images/carozzi.jpg' %}" class="d-block  tam" alt="...">
+                    </div>
+                    <div class="tarjeta pl-2 pr-2">
+                        <img src="{% static 'images/coca-cola.jpg' %}" class="d-block  tam" alt="...">
+                    </div>
+                    <div class="tarjeta pl-2">
+                        <img src="{% static 'images/unilever.jpg' %}" class="d-block  tam" alt="...">
+                    </div>
+                  </div>
+              </div>
+
+              <div class="carousel-item">
+                <div class="card-deck">
+                    <div class="tarjeta pr-2">
+                        <img src="{% static 'images/arcor.jpg' %}" class="d-block  tam" alt="...">
+                    </div>
+                    <div class="tarjeta pl-2 pr-2">
+                        <img src="{% static 'images/nestle.jpg' %}" class="d-block  tam" alt="...">
+                    </div>
+                    <div class="tarjeta pl-2">
+                        <img src="{% static 'images/pyg.jpg' %}" class="d-block  tam" alt="...">
+                    </div>
+                  </div>
+              </div>
+
+              <div class="carousel-item">
+                <div class="card-deck">
+                    <div class="tarjeta pr-2">
+                        <img src="{% static 'images/san-jorge.jpg' %}" class="d-block  tam" alt="...">
+                    </div>
+                    <div class="tarjeta pl-2 pr-2">
+                        <img src="{% static 'images/sopraval.jpg' %}" class="d-block  tam" alt="...">
+                    </div>
+                    <div class="tarjeta pl-2">
+                        <img src="{% static 'images/watts.jpg' %}" class="d-block  tam" alt="...">
+                    </div>
+                  </div>
+              </div>
+
+            </div>
+            <a class="carousel-control-prev izq" href="#carouselExampleCaptions" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next der" href="#carouselExampleCaptions" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+    </section>
+
+{% endblock %}

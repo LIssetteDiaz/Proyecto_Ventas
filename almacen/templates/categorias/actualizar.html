@@ -1,0 +1,22 @@
+{% extends 'layoutadmin.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block content %}
+    <div class="container p-5">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+            <!-- {{ form.as_p }} -->
+            <div class="form-group">
+                <label for="nombre" class="txt_negrita">Nombre</label>
+                {{ form.nombre|add_class:"form-control" }} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto -->
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Aceptar</button>
+            <a href="../" type="submit" class="btn btn-primary">Volver</a>
+            
+        </form>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends 'layoutadmin.html' %}
+{% load static %}
+
+{% block content %}
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <table id="tblTitulo1" class="table1" width="100%">
+                        <br>
+                        <br>
+                      <tr>
+                        <td>
+                          <h2><b>&nbsp;&nbsp;Forma Pago</b></h2></td>
+                      </tr>
+                    </table>
+					<div class="container_table box-title table-responsive" style="width: 100%">
+					  <form class="form-horizontal well" id="forms-registro">
+						  <div class="form-group">
+   							  <label class="col-sm-3 control-label" for="input01">Id</label>
+   							  <div class="col-sm-3">
+   								  <input notnull="" title="Run" type="text" class="input-large required " id="txRun" name="txRun" maxlength="10" value="0">
+   							  </div>
+   						  </div>
+						  <div class="form-group">
+							  <label class="col-sm-3 control-label" for="input01">Descripcion</label>
+							  <div class="col-sm-3">
+								  <input notnull="" disabled title="Nombres" type="text" class="input-large required " id="txNombres" name="txNombres" maxlength="100" value="0">
+							  </div>
+						  </div>
+                           
+						  <form class="" action="index.html" method="post">
+
+						  </form>
+					  </div>
+
+<!-- **************************************************************************-->
+			<div class="form-actions">
+			  <table width="100%" border="0"><tbody><tr><td width="100%" align="right">
+  <button type="button" align="right" name="btLeer" id="btLeer" class="btn  btn-success" onclick="javascript:mpPago.leer();"><i class="fa fa-floppy-save"></i> Leer</button>
+  <button type="button" disabled  name="btActualizar" id="btActualizar" align="right" class="btn  btn-success" onclick="javascript:mpPago.actualizar();"><i class="fa fa-floppy-save"></i> Actualizar</button>
+  <button type="button" disabled  name="btEliminar" id="btEliminar" align="right" class="btn  btn-success" onclick="javascript:mpPago.eliminar();"><i class="fa fa-floppy-save"></i> Eliminar</button>
+  <button align="right" disabled  name="btCancelar" id="btCancelar" class="btn btn-primary" name="commit" value="Cerrar" type="reset" onclick="javascript:mpPago.cancelar()"><i class="fa fa-ok"> Cancelar</i></button>
+			  </td></tr></tbody></table>
+			</div>
+  </div>
+</div>
+</div>
+</div>
+</section>
+
+{% endblock %}
