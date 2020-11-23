@@ -30,9 +30,9 @@ from django.conf.urls import include
 from django.contrib.auth.views import PasswordResetView, PasswordResetDoneView, PasswordResetCompleteView, PasswordResetConfirmView
 from rest_framework import routers
 
-from almacen.views import ProgrammerList
+from almacen.views import ProductoList
 router = routers.DefaultRouter()
-router.register('formaPagoRest',ProgrammerList)
+router.register('productoRest',ProductoList)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -41,6 +41,7 @@ urlpatterns = [
     path('venta/compra/', views.compra, name="compra"),
     path('venta/', views.venta, name="venta"),
     path('venta/<int:tipo>', views.venta, name="venta"),
+    # path('venta/<int:tipo>/<str:docu>', views.venta, name="ventaCompra"),
     path('locales/', views.locales, name="locales"),
     # path('venta/detallesProducto/<int:producto>', views.DetallesProducto, name="detalleProducto"),
     path('indexadmin/', views.indexadmin, name="indexadmin"),
@@ -48,7 +49,9 @@ urlpatterns = [
     
     path('registrar/', views.registrar, name="registrar"),
     path('ingresar/', views.ingresar, name="ingresar"),
+    path('ingresoRequerido/', views.ingreso_requerido, name="ingresoRequerido"),
     path('salir/', views.cerrar_seccion, name="salir"),
+   
 
     path('accounts/', include('django.contrib.auth.urls')),
 
@@ -56,6 +59,9 @@ urlpatterns = [
     path('api/', include(router.urls)),
    
     #*********************
+
+    #*********************IntegracionConFacebook
+    path('oauth/', include('social_django.urls', namespace='social')),
 
     #******************************Restaurar contrasena
     path('reset_password/', 

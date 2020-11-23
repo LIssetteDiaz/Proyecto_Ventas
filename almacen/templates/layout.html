@@ -14,6 +14,8 @@
         <script src="https://kit.fontawesome.com/11aea48714.js"></script>
         <script src="{% static 'js/sweetalert2.min.js' %}"></script>
         <link rel="stylesheet" href="{% static 'css/sweetalert2.min.css' %}">
+        <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Ensures optimal rendering on mobile devices. -->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     </HEAD>
 
     <BODY>
@@ -94,7 +96,7 @@
                     {% endif %}
                 
                 <div class="nombre-usuario pr-3">
-                    {% if user.email %}
+                    {% if user.is_authenticated %}
                         Bienvenido: {{ request.user.first_name }}
                     {% endif %}
                 </div>

@@ -18,31 +18,28 @@ from almacen.forms import FormSucursales, FormTipoProducto, FormProducto, FormRe
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic import View
 from django.contrib.auth import authenticate, login, logout
-# from django.contrib.auth.forms import AuthenticationForm
-# from django.contrib.auth import login as do_login
-# from django.contrib.auth.decorators import login_required
-# from django.contrib.auth.mixins import LoginRequiredMixin
 
-from .models import PRODUCTO, CATEGORIA, TIPO_PRODUCTO, FORMA_PAGO, SUCURSAL
+from django.contrib.auth.decorators import login_required
+
+from .models import PRODUCTO, CATEGORIA, TIPO_PRODUCTO, FORMA_PAGO, SUCURSAL, DOCUMENTO
 from django.contrib.auth.models import User
 
-from .serializers import ProgrammerSerializer
+from .serializers import ProductoSerializer
 from rest_framework import viewsets
 
-class ProgrammerList(viewsets.ModelViewSet):
+class ProductoList(viewsets.ModelViewSet):
     queryset = FORMA_PAGO.objects.all()
-    serializer_class = ProgrammerSerializer
+    serializer_class = ProductoSerializer
 
 
 # class ProgrammerDetail(generics.RetrieveUpdateDestroyAPIView):
 #     queryset = CATEGORIA.objects.all()
 #     serializer_class = ProgrammerSerializer
 
-
-
 def index(request):
     return render(request, 'index.html')
-        
+
+@login_required(login_url="ingresoRequerido")
 def compra(request):
     return render(request, 'compra.html')
 
@@ -51,7 +48,17 @@ def venta(request, tipo = None):
         prod = PRODUCTO.objects.filter(tipo_producto=tipo)
     else:
         prod = PRODUCTO.objects.all()
-    
+
+
+    if request.method == 'POST':
+        
+        descDocu = request.POST['descDocu']
+
+        documento = DOCUMENTO(
+            descripcion = descDocu
+        )
+
+        documento.save()
 
     categ = CATEGORIA.objects.all()
     
@@ -113,6 +120,22 @@ def ingresar(request):
             messages.warning(request, 'f')
         
     return render(request, 'usuarios/ingreso.html')
+
+def ingreso_requerido(request):
+    
+    username = request.POST.get('username')
+    password = request.POST.get('password')
+
+    if request.method == 'POST':
+        user = authenticate(request, username = username, password = password)
+
+        if user is not None:
+            login(request, user)
+            return redirect('../venta/compra/')
+        else:
+            messages.warning(request, 'f')
+        
+    return render(request, 'usuarios/ingresoRequerido.html')
 
 def cerrar_seccion(request):
     logout(request)

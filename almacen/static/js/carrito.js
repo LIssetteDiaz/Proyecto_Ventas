@@ -136,7 +136,7 @@ class Carrito{
         productosLS.forEach(function(producto){
             const row = document.createElement('tr');
             row.innerHTML = `
-                <td><img src="${producto.imagen}" width=100></td>
+                <td><img src="${producto.imagen}" width=60></td>
                 <td>${producto.titulo}</td>
                 <td>$${producto.precio}</td>
                 <td>
@@ -171,6 +171,7 @@ class Carrito{
     calcularTotal(){
         let productoLS;
         let total = 0;
+        let totalDolar = 0;
         productoLS = this.obtenerProductosLocalStorage();
         console.log(productoLS);
         for(let i = 0; i < productoLS.length; i++){
@@ -180,9 +181,15 @@ class Carrito{
 
             let element = (num1 * num2);
             total = total + element;
-            
+            function roundTo(value, places){
+                var power = Math.pow(10, places);
+                return Math.round(value * power) / power;
+            }
+            totalDolar = roundTo(total / 764.20, 2);
+            // totalDolar = totalDolar.toString().replace(/\./g,',');
         }
         document.getElementById('total').innerHTML = total.toLocaleString();
+        document.getElementById('dolar').innerHTML = totalDolar.toLocaleString('en-US');
     }
     // http://127.0.0.1:8000/venta/compra/index.html
 }

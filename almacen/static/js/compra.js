@@ -16,44 +16,45 @@ function cargarEventos(){
     procesarCompraBtn.addEventListener('click', procesarCompra);
 }
 
-function procesarCompra(e){
-    e.preventDefault();
-    if(cliente.value === '' || correo.value === ''){
-        Swal.fire({
-            type: 'error',
-            title: 'Oops...',
-            text: 'ingrese los campos requeridos',
-            timer: 2000,
-            showConfirmButton: false
-        })
 
-        // Swal.fire({
-        //     type: 'error',
-        //     title: 'Oops...',
-        //     text: 'No hay productos seleccionados',
-        //     timer: 2000,
-        //     showConfirmButton: false
-        // }).then(function(){
-        //     window.location = "venta/";
-        // })
-    }
-    else{
-        const cargandoGif = document.querySelector('#cargando');
-        cargandoGif.style.display = 'block';
+// function procesarCompra(e){
+//     e.preventDefault();
+//     if(cliente.value === '' || correo.value === ''){
+//         Swal.fire({
+//             type: 'error',
+//             title: 'Oops...',
+//             text: 'ingrese los campos requeridos',
+//             timer: 2000,
+//             showConfirmButton: false
+//         })
 
-        const enviado = document.createElement('img');
-        enviado.src = '../../images/mail.gif';
-        enviado.style.display = 'block';
-        enviado.width = '150';
+//         // Swal.fire({
+//         //     type: 'error',
+//         //     title: 'Oops...',
+//         //     text: 'No hay productos seleccionados',
+//         //     timer: 2000,
+//         //     showConfirmButton: false
+//         // }).then(function(){
+//         //     window.location = "venta/";
+//         // })
+//     }
+//     else{
+//         const cargandoGif = document.querySelector('#cargando');
+//         cargandoGif.style.display = 'block';
 
-        setTimeout(() => {
-            cargandoGif.style.display = 'none';
-            document.querySelector('#loaders').appendChild(enviado);
-            setTimeout(() => {
-                enviado.remove();
-                compra.vaciarLocalStorage();
-                window.location = "../../venta/";
-            }, 2000);
-        }, 3000);
-    }
-}
+//         const enviado = document.createElement('img');
+//         enviado.src = '../../images/mail.gif';
+//         enviado.style.display = 'block';
+//         enviado.width = '150';
+
+//         setTimeout(() => {
+//             cargandoGif.style.display = 'none';
+//             document.querySelector('#loaders').appendChild(enviado);
+//             setTimeout(() => {
+//                 enviado.remove();
+//                 compra.vaciarLocalStorage();
+//                 window.location = "../../venta/";
+//             }, 2000);
+//         }, 3000);
+//     }
+// }

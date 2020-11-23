@@ -29,6 +29,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+SOCIAL_AUTH_FACEBOOK_KEY = '446235646541758'
+SOCIAL_AUTH_FACEBOOK_SECRET = 'bc1208c755aba10a9fc4c2ee3db77fea'
+
 
 # Application definition
 
@@ -43,6 +46,7 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'sweetify',
     'rest_framework',
+    'social_django',
 ]
 
 MIDDLEWARE = [
@@ -53,6 +57,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
 ROOT_URLCONF = 'src.urls'
@@ -68,6 +73,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -153,3 +160,10 @@ EMAIL_HOST_USER = 'elkioskitoltda@gmail.com'
 EMAIL_HOST_PASSWORD = 'kioskito1234'
 
 SWEETIFY_SWEETALERT_LIBRARY = 'sweetalert2'
+
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.facebook.FacebookOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+LOGIN_REDIRECT_URL ='/'

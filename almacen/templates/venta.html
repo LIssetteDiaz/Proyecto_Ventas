@@ -32,7 +32,7 @@
     <div class="cajita m-4 p-3" id="lista-productos">
       {% for prod in productos %}
         
-        <div class="card carta p-3 m-3 bg-white" style="width: 18rem;">
+        <div class="card carta p-3 m-3 bg-white" style="width: 17rem;">
           
           <div class="card-body">
             <img src="{% static 'images/' %}{{prod.imagen}}" class="card-img-top" alt="...">
@@ -62,12 +62,16 @@
       {% endfor %}
     </div>
   </div>
+
   
-    
+  <form name="docu" method="POST" action="" class="p-3">
+    {% csrf_token%}
+    <input type="text" name="descDocu"/>
+  </form>
+  <script>
+    document.docu.descDocu.value = "Boleta"
+  </script>
   
   <script src="{% static 'js/functions.js' %}"></script>
-  
-	    
-  
   
 {% endblock %}

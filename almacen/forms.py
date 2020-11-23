@@ -1,5 +1,5 @@
 from django import forms
-from .models import SUCURSAL, TIPO_PRODUCTO, PRODUCTO
+from .models import SUCURSAL, TIPO_PRODUCTO, PRODUCTO, FORMA_PAGO, DOCUMENTO
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
@@ -69,3 +69,5 @@ class FormIngreso(UserCreationForm):
     class Meta:
         model = User
         fields = ("email","password1")
+
+        
