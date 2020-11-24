@@ -64,14 +64,6 @@
   </div>
 
   
-  <form name="docu" method="POST" action="" class="p-3">
-    {% csrf_token%}
-    <input type="text" name="descDocu"/>
-  </form>
-  <script>
-    document.docu.descDocu.value = "Boleta"
-  </script>
-  
   <script src="{% static 'js/functions.js' %}"></script>
   
 {% endblock %}
