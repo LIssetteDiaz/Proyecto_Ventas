@@ -2,12 +2,12 @@
 {% load static %}
 
 {% block content %}
-    <div class="row pb-5 pt-3">
+    <div class="row pb-2">
         <div class="col-md-3">
         </div>
         <div class="col-md-6">
             
-            <div class="container ingreso p-5">
+            <div class="container ingreso pt-2">
             <h1 class="text-center p-3">Ingreso</h1>
             <h3 class="text-center p-3">ingrese su nombre de usuario y contraseña</h3>
                 {% if messages %}
@@ -24,13 +24,13 @@
                     <label for="password">Contraseña:</label>
                     <input class="form-control" type="password" name="password"/>
                     </p>
-                    <input class="btn btn-outline-dark" type="submit" value="Ingresar"/>
-                    <a href="{% url 'reset_password' %}"  class="p-4">olvide mi contraseña</a>
+                    <input class="btn btn-dark" type="submit" value="Ingresar"/>
+                    <a href="{% url 'social:begin' 'facebook' %}" class="btn btn-primary">Ingresar con facebook</a>
+                    <a href="{% url 'reset_password' %}" class="btn btn-success">olvide mi contraseña</a>
                 </form>
-                <a href="{% url 'social:begin' 'facebook' %}">Login con facebook</a>
             </div>
         </div>
     </div>
-    <br>
     
 {% endblock %}
+

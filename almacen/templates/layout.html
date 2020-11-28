@@ -16,6 +16,7 @@
         <link rel="stylesheet" href="{% static 'css/sweetalert2.min.css' %}">
         <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Ensures optimal rendering on mobile devices. -->
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <script src="https://smtpjs.com/v3/smtp.js"></script>
     </HEAD>
 
     <BODY>
@@ -97,7 +98,7 @@
                 
                 <div class="nombre-usuario pr-3">
                     {% if user.is_authenticated %}
-                        Bienvenido: {{ request.user.first_name }}
+                        <span id="username">Bienvenido: {{ request.user.first_name }}</span>
                     {% endif %}
                 </div>
                 <a class="navbar-brand" href="/carrito"><i class="fas fa-shopping-cart fa-x5"></i></a>
