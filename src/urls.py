@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from almacen import views, static
-from almacen.views import ProductoListado, ProductoDetalle, ProductoCrear, ProductoActualizar, ProductoEliminar
+from almacen.views import ProductoListado, ProductoDetalle, ProductoCrear, ProductoActualizar, ProductoEliminar, ProductoDetalle2
 from almacen.views import PagoListado, PagoDetalle, PagoCrear, PagoActualizar, PagoEliminar
 from almacen.views import SucursalCrear, SucursalListado, SucursalDetalle, SucursalActualizar, SucursalEliminar
 from almacen.views import CategoriaCrear, CategoriaListado, CategoriaDetalle, CategoriaActualizar, CategoriaEliminar
@@ -73,7 +73,7 @@ urlpatterns = [
     path('reset_password_complete/', 
         PasswordResetCompleteView.as_view(template_name="accounts/password_reset_complete.html"), name="password_reset_complete"),
     #**************************************************
-
+    path('venta/detalle/<int:pk>', ProductoDetalle2.as_view(template_name = "detalleProducto.html"), name="detalleProducto"),
     #**************************************Producto
     # La ruta 'leer' en donde listamos todos los registros o postres de la Base de Datos
     path('producto/', ProductoListado.as_view(template_name = "productos/producto.html"), name='leer'),
@@ -171,10 +171,10 @@ urlpatterns = [
     
  
     # # La ruta 'crear' en donde mostraremos un formulario para crear un nuevo postre o registro  
-     path('usuarioAdmin/crear/', UsuarioCrear.as_view(template_name = "administrar_usuarios/crear.html"), name='crear'),
-
+    #  path('usuarioAdmin/crear/', UsuarioCrear.as_view(template_name = "administrar_usuarios/crear.html"), name='crear'),
+    path('usuarioAdmin/crear/', views.UsuarioCrear, name="crearUsuarioAdmin"),
     # # La ruta 'actualizar' en donde mostraremos un formulario para actualizar un postre o registro de la Base de Datos 
-     path('usuarioAdmin/editar/<int:pk>', UsuarioActualizar.as_view(template_name = "administrar_usuarios/actualizar.html"), name='actualizar'), 
+    path('usuarioAdmin/editar/<int:id>', views.UsuarioActualizar, name="editarUsuarioAdmin"),
  
     # # La ruta 'eliminar' que usaremos para eliminar un postre o registro de la Base de Datos 
      path('usuarioAdmin/eliminar/<int:pk>', UsuarioEliminar.as_view(), name='eliminar'),    

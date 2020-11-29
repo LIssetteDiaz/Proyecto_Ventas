@@ -13,7 +13,7 @@ from django.contrib.messages.views import SuccessMessageMixin
  
 # Habilitamos los formularios en Django
 from django import forms
-from almacen.forms import FormSucursales, FormTipoProducto, FormProducto, FormRegistro, FormIngreso
+from almacen.forms import FormSucursales, FormTipoProducto, FormProducto, FormRegistro, FormIngreso, FormRegistro2
 
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic import View
@@ -149,6 +149,9 @@ def producto(request):
 
 def empleados(request):
     return render(request, 'empleados.html')
+
+class ProductoDetalle2(DetailView): 
+    model = PRODUCTO # Llamamos a la clase 'Postres' que se encuentra en nuestro archivo 'models.py'
 
 
 # *****************************************************CrudProducto******************************************************************
@@ -351,29 +354,53 @@ class TipoProductoEliminar(SuccessMessageMixin, DeleteView):
 # *****************************************************CrudUsuarios******************************************************************
 class UsuarioListado(ListView): 
     model = User # Llamamos a la clase 'Postres' que se encuentra en nuestro archivo 'models.py'
+ 
+def UsuarioCrear(request):
 
-class UsuarioCrear(SuccessMessageMixin, CreateView, ListView): 
-    model = User # Llamamos a la clase 'Postres' que se encuentra en nuestro archivo 'models.py'
-    form = User # Definimos nuestro formulario con el nombre de la clase o modelo 'Postres'
-    fields = "__all__" # Le decimos a Django que muestre todos los campos de la tabla 'postres' de nuestra Base de Datos 
-    success_message = 'Usuario Creado Correctamente !' # Mostramos este Mensaje luego de Crear un Postre
+    form = FormRegistro2()
+    email = request.POST.get('email')
+    validarEmail = User.objects.filter(email = email)
     
-    # Redireccionamos a la página principal luego de crear un registro o postre
-    def get_success_url(self):        
-        return reverse('leerUsuario') # Redireccionamos a la vista principal 'leer'
+    
+    if request.method == 'POST':
+        if validarEmail:
+            messages.warning(request, 'el email ya existe')
+        else:
+            form = FormRegistro2(request.POST)
+            if form.is_valid():
+                form.save()
+                messages.warning(request, 'Usuario creado correctamente')
+                return redirect('leerUsuario')
+    
+    form.fields['username'].help_text = None
+    form.fields['password1'].help_text = None
+    form.fields['password2'].help_text = None
+
+    return render(request, 'administrar_usuarios/crear.html',{'form':form})
+
+def UsuarioActualizar(request, id):
+
+    user = User.objects.get(id=id)
+    form = FormRegistro2(request.POST or None, instance=user)
+    # email = request.POST.get('email')
+    # validarEmail = User.objects.filter(email = email)
+    
+    
+    if form.is_valid():
+        
+        form.save()
+        messages.warning(request, 'Usuario editado correctamente')
+        return redirect('leerUsuario')
+    
+    form.fields['username'].help_text = None
+    form.fields['password1'].help_text = None
+    form.fields['password2'].help_text = None
+
+    return render(request, 'administrar_usuarios/actualizar.html',{'form':form})
 
 class UsuarioDetalle(DetailView): 
     model = User # Llamamos a la clase 'Postres' que se encuentra en nuestro archivo 'models.py'
 
-class UsuarioActualizar(SuccessMessageMixin, UpdateView): 
-    model = User # Llamamos a la clase 'Postres' que se encuentra en nuestro archivo 'models.py' 
-    form = User # Definimos nuestro formulario con el nombre de la clase o modelo 'Postres' 
-    fields = "__all__" # Le decimos a Django que muestre todos los campos de la tabla 'postres' de nuestra Base de Datos 
-    success_message = 'Usuario Actualizado Correctamente !' # Mostramos este Mensaje luego de Editar un Postre 
- 
-    # Redireccionamos a la página principal luego de actualizar un registro o postre
-    def get_success_url(self):               
-        return reverse('leerUsuario') # Redireccionamos a la vista principal 'leer'
 
 class UsuarioEliminar(SuccessMessageMixin, DeleteView): 
     model = User 

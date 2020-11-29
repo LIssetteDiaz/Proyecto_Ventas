@@ -2,9 +2,27 @@
 {% load static %}
 
 {% block content %}
-    <div class="container p-5">
-        
-        {{ prod.nombre }}
+    <div class="container pt-5">
+        <h1 class="text-center" >Detalles del producto</h1>
+            <div class="row p-5">
+                <div class="col-md-3">
+                </div>
+                <div class="col-md-3">
+                    <p class="font-italic"><span class="font-weight-bold">Nombre:</span> <br> {{object.nombre}}</p>
+                    <p class="font-italic"><span class="font-weight-bold">Descripcion:</span> <br> {{object.descripcion}}</p>
+                    <p class="font-italic"><span class="font-weight-bold">Stock:</span> <br> {{object.stock}}</p>
+                    <p class="font-italic"><span class="font-weight-bold">Precio:</span> <br> {{object.precio_venta}}</p>
+                    <p class="font-italic"><span class="font-weight-bold">Tipo producto:</span> <br> {{object.tipo_producto}}</p>
+                </div>
+                <div class="col-md-3">
+                    <p><span class="font-weight-bold">Imagen:</span> <br> <img src="{% static 'images/'%}{{object.imagen}}" alt="{{object.nombre}}" class="img-fluid pt-2"> </p>
+                    
+                    <a href="../" type="submit" class="btn btn-primary">Volver</a>
+                </div>
+                <div class="col-md-3">
+                </div>
+        </div>
         
     </div>
+    
 {% endblock %}

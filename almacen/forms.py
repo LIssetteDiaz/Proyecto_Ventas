@@ -70,4 +70,12 @@ class FormIngreso(UserCreationForm):
         model = User
         fields = ("email","password1")
 
-        
+class FormRegistro2(UserCreationForm):
+    
+    def __init__(self,*args,**kwargs):
+        super(FormRegistro2,self).__init__(*args,**kwargs)
+        for i in self.visible_fields():
+            i.field.widget.attrs["class"]="form-control"
+    class Meta:
+        model = User
+        fields = ("username","first_name","last_name","email","password1","password2", "is_superuser", "is_staff", "is_active")
